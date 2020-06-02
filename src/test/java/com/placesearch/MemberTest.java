@@ -4,19 +4,25 @@ package com.placesearch;
 import com.placesearch.domain.Member;
 import com.placesearch.domain.MemberRole;
 import com.placesearch.repository.MemberRepository;
-import org.junit.jupiter.api.Test;
+import lombok.extern.java.Log;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Arrays;
+import java.util.Optional;
+
+@RunWith(SpringRunner.class)
 @SpringBootTest
+@Commit
+@Log
 public class MemberTest {
 
     @Autowired
     private MemberRepository repo;
-
-    public MemberTest(MemberRepository repo) {
-        this.repo = repo;
-    }
 
     @Test
     public void testInsert(){
@@ -34,8 +40,18 @@ public class MemberTest {
                 memberRole.setRoleName("ADMIN");
             }
 
-            //repo
+            member.setRoles(Arrays.asList(memberRole));
+
+            repo.save(member);
         }
 
+    }
+
+    @Test
+    public void testRead(){
+
+        Optional<Member> result = repo.findById("user01");
+
+        result.ifPresent(member -> log.info("member" + member));
     }
 }

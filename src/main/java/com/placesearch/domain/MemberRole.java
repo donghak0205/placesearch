@@ -13,7 +13,7 @@ import javax.persistence.Id;
 
 @Getter
 @Setter
-@EqualsAndHashCode(of="uid")
+@EqualsAndHashCode(of="fno")
 @ToString
 @Entity
 public class MemberRole {

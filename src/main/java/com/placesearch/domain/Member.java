@@ -8,12 +8,9 @@ import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,6 +18,7 @@ import java.util.ArrayList;
 @ToString
 @Entity
 public class Member {
+
     @Id
     private String uid;
 
@@ -34,8 +32,10 @@ public class Member {
     @UpdateTimestamp
     private LocalDateTime updateddate;
 
-    @OneToMany
-        @JoinColumn(name="member")
-        private ArrayList<MemberRole> roles;
-
+//    @OneToMany(cascade= CascadeType.ALL, fetch=FetchType.EAGER)
+//        @JoinColumn(name="member")
+//        private List<MemberRole> roles;
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @JoinColumn(name = "member")
+    private List<MemberRole> roles;
 }

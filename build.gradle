@@ -29,9 +29,10 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}
+	testImplementation('org.springframework.boot:spring-boot-starter-test')
+//	{
+//		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+//	}
 
 	//sercurity
 	implementation 'org.springframework.boot:spring-boot-starter-security'
@@ -40,9 +41,20 @@ dependencies {
 	//lombok
 	implementation 'org.projectlombok:lombok'
 	testCompile('org.projectlombok:lombok')
+	annotationProcessor('org.projectlombok:lombok')
+	testAnnotationProcessor('org.projectlombok:lombok')
 
 	//jpa
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	//h2
+	compile 'com.h2database:h2'
+
+	//thymeleaf
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+	//devtools
+	implementation 'org.springframework.boot:spring-boot-devtools'
 }
 
 test {

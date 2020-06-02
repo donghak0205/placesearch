@@ -6,18 +6,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PlaceSearchController {
 
+    @GetMapping("/login")
+    public String login(){
+        return "login.html";
+    }
+
     @GetMapping("/")
     public String index(){
-        return "index";
+        return "admin.html";
     }
 
     @GetMapping("/guest")
-    public void guest(){
-
+    public String guest(){
+        return "guest.html";
     }
 
     @GetMapping("/admin")
-    public void admin(){
-
+    public String admin(){
+        return "admin.html";
     }
 }
