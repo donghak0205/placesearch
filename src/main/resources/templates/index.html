@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>github.com/donghak0205 Search Place</title>
+	<link rel="stylesheet" type="text/css" href="common/index.css">
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+			<form name="searchForm" onsubmit="place.search(); return false;" id="searchForm">
+				<span class='green_window'>
+					<input name ="searchWord" type='text' class='input_text' placeholder="Please enter a search word." id="searchWord"/>
+				</span>
+				<button type='submit' class='sch_smit' th:value="${userName}">Search</button>
+			</form>
+		</header>
+
+	    <div class="container ">
+            <div class="left" style="border: 2px solid #A566FF;">
+				<span th:text="${userName}"></span>
+			</div>
+
+            <div class="right " style="border: 2px solid #D1B2FF;line-height:300px;">
+                <h3 align = "center">No results were found for your search.</h3>
+	        </div>
+
+	    </div>
+
+	</div>
+
+
+	<script src="common/jquery-3.5.1.min.js"></script>
+	<script src="js/index.js"></script>
+</body>
+</html>
