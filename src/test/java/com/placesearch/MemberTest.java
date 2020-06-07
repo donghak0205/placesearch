@@ -9,7 +9,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Arrays;
@@ -17,7 +16,6 @@ import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@Commit
 @Log
 public class MemberTest {
 
@@ -31,7 +29,7 @@ public class MemberTest {
             Member member = new Member();
             member.setUid("user" + i);
             member.setUpw("pw" + i);
-            member.setUname("사용자" + i);
+            member.setUname("user" + i);
 
             MemberRole memberRole = new MemberRole();
             if(i<5){

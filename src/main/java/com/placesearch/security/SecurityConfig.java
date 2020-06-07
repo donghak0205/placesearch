@@ -42,9 +42,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //Custom Login Page
         http.formLogin().loginPage("/login");
 
-        //Repository Login
-        //http.userDetailsService(loginUserService);
-
     }
 
     @Autowired
