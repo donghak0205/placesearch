@@ -25,7 +25,7 @@ public class H2Runner implements ApplicationRunner {
 
 			Member member = new Member();
 			member.setUid("user" + i);
-			member.setUpw("pw" + i);
+			member.setUpw("1");
 			member.setUpw(passwordEncoder.encode(member.getUpw()));
 			member.setUname("user" + i);
 

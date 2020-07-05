@@ -1,36 +1,141 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{/layout/layout1}">
 <head>
-<meta charset="UTF-8">
-<title>github.com/donghak0205 Search Place</title>
+	<meta charset="UTF-8">
+	<title>github.com/donghak0205 Search Place</title>
 	<link rel="stylesheet" type="text/css" href="common/index.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-grid.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-reboot.min.css">
+
 </head>
 <body>
-	<div class="wrapper">
-		<header>
+
+<div class="wrapper">
+	<header>
+		<div id = "divSearchForm">
 			<form name="searchForm" onsubmit="place.search(); return false;" id="searchForm">
-				<span class='green_window'>
-					<input name ="searchWord" type='text' class='input_text' placeholder="Please enter a search word." id="searchWord"/>
-				</span>
-				<button type='submit' class='sch_smit' th:value="${userName}">Search</button>
+						<span class='green_window'>
+							<input name ="keywordNm" type='text' class='input_text' placeholder="Please enter a search word." id="keywordNm" />
+							<!--<input name ="currentPage" type ='hidden' value="2">-->
+							<input type="hidden" name="currentPage" value="1">
+						</span>
+				<button type='submit' class='sch_smit' th:value="${userName}" >Search</button>
+
+                <p> [[${userName}]] Welcome !</p>
+
 			</form>
-		</header>
 
-	    <div class="container ">
-            <div class="left" style="border: 2px solid #A566FF;">
-				<span th:text="${userName}"></span>
-			</div>
+		</div>
+	</header>
 
-            <div class="right " style="border: 2px solid #D1B2FF;line-height:300px;">
-                <h3 align = "center">No results were found for your search.</h3>
-	        </div>
+	<div class="container ">
+		<div class="left" style="border: 2px solid #A566FF;" id="left">
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action active">
+                    내 검색 히스토리
+                </a>
+            </div>
+            <div class="list-group"  th:each="mySearchHistory : ${mySearchHistory}">
+                <li class="list-group-item list-group-item-action" th:text="|${mySearchHistory[0]} / ${mySearchHistory[1]}|"></li>
+            </div>
+         </div>
 
-	    </div>
+         <div class="right" style="border: 2px solid #D1B2FF;" id="right">
+       <!--     <table id="searchResult">
+                <thead>
+                <tr>
+                    <th>PlaceName</th>
+                    <th>AddressName</th>
+                    <th>Phone</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="result : ${result}">
+                    <td th:text="${result.place_name}"></td>
+                    <td th:text="${result.address_name}"></td>
+                    <td th:text="${result.phone}"></td>
 
-	</div>
+                </tr>
+                </tbody>
+            </table>-->
+
+             <table class="table table-striped">
+                 <thead>
+                 <tr>
+                     <th scope="col">PlaceName</th>
+                     <th scope="col">AddressName</th>
+                     <th scope="col">Phone</th>
+                 </tr>
+                 </thead>
+                 <tbody>
+                 <tr th:each="result : ${result}">
+                     <td th:text="${result.place_name}"></td>
+                     <td th:text="${result.address_name}"></td>
+                     <td th:text="${result.phone}">
+                     <td>
+                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                         Detail
+                     </button>
+                     </td>
+
+                 </tr>
+                 </tbody>
+             </table>
+
+<!--            <div class="list-group">
+
+                 <li class="list-group-item d-flex justify-content-between align-items-center" th:each="result : ${result}">
+                     <h7>[[result.place_name</h7>
+                     <h7>[[{result.address_name}</h7>
+                     <h7>[[{result.phone}</h7>
+                 </li>
+             </div>-->
+
+             <nav aria-label="Page navigation example">
+                 <ul class="pagination" th:each = "selectParameter: ${selectParameter}">
+                     <li class="page-item" th:each="num: ${#numbers.sequence(1,selectParameter[0])}">
+                         <a class="page-link" th:onclick="place.list('[[${num}]]',[[${selectParameter[1]}]])">[[${num}]]</a></li>
+
+                 </ul>
+             </nav>
+
+             <!-- Modal -->
+             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                 <div class="modal-dialog" role="document">
+                     <div class="modal-content">
+                         <div class="modal-header">
+                             <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                             </button>
+                         </div>
+                         <div class="modal-body">
+                             ...
+                         </div>
+                         <div class="modal-footer">
+                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+
+        </div>
 
 
-	<script src="common/jquery-3.5.1.min.js"></script>
-	<script src="js/index.js"></script>
+
+    </div><!--continer-->
+
+</div>
+
+
+<script src="common/jquery-3.5.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/index.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7947034c108cfae102db77003dea5e8a"></script>
+
+
 </body>
 </html>

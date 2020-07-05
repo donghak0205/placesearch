@@ -1,7 +1,7 @@
     html, body {
         margin: 0;
-        width: 100%;
-        height: 100%;
+        width: 80%;
+        height: 80%;
     }
     header{
             width: 100%;
@@ -14,7 +14,7 @@
     .container{
             position: absolute;
             width:100%;
-            height: 70%;
+            height: 50%;
             border: #8041D9;
     }
     .left{
@@ -22,7 +22,7 @@
             position: absolute;
             left : 5%;
             width: 30%;
-            height: 100%;
+            height: 120%;
             border-color: #A566FF;
     }
     .right{
@@ -30,7 +30,8 @@
             position: absolute;
             left: 40%;
             right: 5%;
-            height: 100%;
+            width:80%;
+            height: 120%;
 
     }
 
@@ -52,7 +53,7 @@
         outline: none;
     }
     .sch_smit {
-        width: 54px; height: 40px;
+        width: 80px; height: 40px;
         margin: 0; border: 0;
         vertical-align: top;
         background: #A566FF;

@@ -32,9 +32,7 @@ public class Member {
     @UpdateTimestamp
     private LocalDateTime updateddate;
 
-//    @OneToMany(cascade= CascadeType.ALL, fetch=FetchType.EAGER)
-//        @JoinColumn(name="member")
-//        private List<MemberRole> roles;
+
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     @JoinColumn(name = "member")
     private List<MemberRole> roles;
