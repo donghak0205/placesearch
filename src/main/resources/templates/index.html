@@ -46,32 +46,17 @@
 		<div class="left" style="border: 2px solid #A566FF;" id="left">
             <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-action active">
-                    내 검색 히스토리
+                    My Search History
                 </a>
             </div>
             <div class="list-group"  th:each="mySearchHistory : ${mySearchHistory}">
-                <li class="list-group-item list-group-item-action" th:text="|${mySearchHistory[0]} / ${mySearchHistory[1]}|"></li>
+<!--                <li class="list-group-item list-group-item-action" th:text="|${mySearchHistory[0]} / ${mySearchHistory[1]}|"></li>-->
+                <li class="list-group-item list-group-item-action" th:text="|${mySearchHistory[0]}|"></li>
             </div>
          </div>
 
          <div class="right" style="border: 2px solid #D1B2FF;" id="right">
-       <!--     <table id="searchResult">
-                <thead>
-                <tr>
-                    <th>PlaceName</th>
-                    <th>AddressName</th>
-                    <th>Phone</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="result : ${result}">
-                    <td th:text="${result.place_name}"></td>
-                    <td th:text="${result.address_name}"></td>
-                    <td th:text="${result.phone}"></td>
 
-                </tr>
-                </tbody>
-            </table>-->
 
              <table class="table table-striped">
                  <thead>
@@ -86,8 +71,6 @@
                      <td id="place_name" th:text="${result.place_name}"></td>
                      <td id="address_name" th:text="${result.address_name}"></td>
                      <td id="phone" th:text="${result.phone}">
-          <!--           <td id="x" style="visibility:hidden" th:text="${result.x}">
-                     <td id="y" style="visibility:hidden" th:text="${result.y}">-->
                      <td>
                      <button type="button" id="mapOverlay" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" th:data-place_name="${result.place_name}" th:data-address_name="${result.address_name}" th:data-phone="${result.phone}" th:data-x="${result.x}" th:data-y="${result.y}">
                          Detail
@@ -97,15 +80,6 @@
                  </tr>
                  </tbody>
              </table>
-
-<!--            <div class="list-group">
-
-                 <li class="list-group-item d-flex justify-content-between align-items-center" th:each="result : ${result}">
-                     <h7>[[result.place_name</h7>
-                     <h7>[[{result.address_name}</h7>
-                     <h7>[[{result.phone}</h7>
-                 </li>
-             </div>-->
 
              <nav aria-label="Page navigation example">
                  <ul class="pagination" th:each = "selectParameter: ${selectParameter}">
@@ -135,17 +109,11 @@
                      </div>
                  </div>
              </div>
-
-
         </div>
-
-
 
     </div><!--continer-->
 
 </div>
-
-
 
 
 </body>
