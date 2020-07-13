@@ -1,0 +1,17 @@
+plugins {
+    id 'java'
+}
+
+group 'com.placesearch'
+version '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+
+}

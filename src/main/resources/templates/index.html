@@ -5,11 +5,22 @@
 <head>
 	<meta charset="UTF-8">
 	<title>github.com/donghak0205 Search Place</title>
+    <script src="common/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/mapOverlay.js"></script>
+
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="common/index.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap-grid.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" type="text/css" href="css/kakao-map.css">
 
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2d04908823f5f74f482f27bbb4f963f7&libraries=services,clusterer,drawing"></script>
+<style>
+
+</style>
 </head>
 <body>
 
@@ -72,11 +83,13 @@
                  </thead>
                  <tbody>
                  <tr th:each="result : ${result}">
-                     <td th:text="${result.place_name}"></td>
-                     <td th:text="${result.address_name}"></td>
-                     <td th:text="${result.phone}">
+                     <td id="place_name" th:text="${result.place_name}"></td>
+                     <td id="address_name" th:text="${result.address_name}"></td>
+                     <td id="phone" th:text="${result.phone}">
+          <!--           <td id="x" style="visibility:hidden" th:text="${result.x}">
+                     <td id="y" style="visibility:hidden" th:text="${result.y}">-->
                      <td>
-                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                     <button type="button" id="mapOverlay" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" th:data-place_name="${result.place_name}" th:data-address_name="${result.address_name}" th:data-phone="${result.phone}" th:data-x="${result.x}" th:data-y="${result.y}">
                          Detail
                      </button>
                      </td>
@@ -113,7 +126,8 @@
                              </button>
                          </div>
                          <div class="modal-body">
-                             ...
+                             <div id="map" style="width:100%;height:350px;">
+                             </div>
                          </div>
                          <div class="modal-footer">
                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -121,6 +135,7 @@
                      </div>
                  </div>
              </div>
+
 
         </div>
 
@@ -131,11 +146,8 @@
 </div>
 
 
-<script src="common/jquery-3.5.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/index.js"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7947034c108cfae102db77003dea5e8a"></script>
 
 
 </body>
+
 </html>

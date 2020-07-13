@@ -1,3 +1,5 @@
+var overlay;
+
 
 var place = {
 

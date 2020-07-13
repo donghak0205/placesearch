@@ -1,0 +1,14 @@
+spring:
+  devtools:
+    livereload:
+      enabled: true
+  freemarker :
+    cache : false
+  thymeleaf:
+    cache: false
+  datasource:
+    url : jdbc:h2:~/test;AUTO_SERVER=TRUE
+  jpa:
+    show-sql: true
+server:
+  port: 9091
