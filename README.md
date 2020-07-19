@@ -19,7 +19,7 @@ The project made based on the daum api.(korea API site : https://apis.map.kakao.
 ...
 
 ### 3.Instructions
-> 1. The project is a multi-module project.Both projects must be executed for the function.  
+> 1. The project is multi-module project. Both projects must be executed for the function.  
      placesearch(9090: Main), placesearch-api(9091 : RestApi)  
 > 2. Accessible id is user5 ~ user9.     
      Inaccessible id is user1~user4. When you log in with that ID, it goes to the 403 error page.  
