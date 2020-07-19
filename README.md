@@ -1,7 +1,7 @@
-![PlaceSearch](https://user-images.githubusercontent.com/58127426/87871002-e08a2680-c9e7-11ea-832c-bef25a2883ce.gif)
+
 
 # placesearch
-The placesearch is place search project. Enter your keyword to show the results.
+The placesearch is place search project. Enter your keyword to show the results.  
 The project made based on the daum api.(korea API site : https://apis.map.kakao.com)
 
 ## Information
