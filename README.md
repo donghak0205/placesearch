@@ -2,7 +2,7 @@
 
 # placesearch
 The placesearch is place search project. Enter your keyword to show the results.
-The project made based on the daum api.(korea API site : https://apis.map.kakao.com).
+The project made based on the daum api.(korea API site : https://apis.map.kakao.com)
 
 ## Information
 ### 1. Front End
