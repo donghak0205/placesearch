@@ -42,13 +42,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //Custom Login Page
         http.formLogin().loginPage("/login");
 
+        //Custom Logout Page
+        http.logout().logoutUrl("/logout")
+                     .logoutSuccessUrl("/login");
+
+        //Custom Forbidden Page
+        http.exceptionHandling().accessDeniedPage("/forbidden");
+
     }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
 
         log.info("build Auth global..........");
-
+        //Encoder password
         auth.userDetailsService(loginUserService).passwordEncoder(passwordEncoder());
 
     }

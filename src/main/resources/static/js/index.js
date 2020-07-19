@@ -6,7 +6,9 @@ var place = {
     search : function(){
 
         var frm = document.searchForm;
+        var buttonClick = frm.buttonClick.value;
 
+        //If keyword is null
         if($.trim(frm.keywordNm.value) == ""){
             alert("Please enter a search work.");
             frm.keywordNm.focus();
@@ -20,22 +22,19 @@ var place = {
         $.ajax({
             type:"GET",
             url: "http://localhost:9091/place",
-            //url: url,
             data: data,
             dataType : 'JSON',
 
             success: function(result){
-
+                result.buttonClick = buttonClick;
                 place.makeList(result);
+
             },
             error : function( jqXHR, textStatus, errorThrown ) {
 
                 console.log(jqXHR.status );
-
                 console.log( jqXHR.statusText );
-
                 console.log( jqXHR.responseText );
-
                 console.log( jqXHR.readyState );
 
             }
@@ -70,7 +69,8 @@ var place = {
                 } //error
              });//ajax end
         },
-    // 리스트 및 페이징 함수
+
+
     list : function(currentPage, keywordNm) {
 
         var currentPage = currentPage;
@@ -83,7 +83,6 @@ var place = {
 
         $.ajax({
             type: "GET",
-            //url: "http://localhost:8081/place",
             url: "http://localhost:9091/place",
             data: data,
             dataType: 'JSON',
@@ -92,11 +91,8 @@ var place = {
             },
             error : function( jqXHR, textStatus, errorThrown ) {
                 console.log(jqXHR.status );
-
                 console.log( jqXHR.statusText );
-
                 console.log( jqXHR.responseText );
-
                 console.log( jqXHR.readyState );
 
             }
@@ -105,6 +101,7 @@ var place = {
 
 }
 
+//Reload the indexPage
 function refreshMemList(){
     location.reload();
 }

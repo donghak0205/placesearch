@@ -21,7 +21,6 @@ public class RestApiController {
     public ResponseEntity searchkeyword(HttpSession session, RestSearchVo paramVO) throws Exception {
 
         ResponseEntity apiResponse = kakaoMapApi.getPlace(paramVO);
-
         return apiResponse;
 
     }

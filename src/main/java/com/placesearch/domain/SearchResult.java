@@ -20,26 +20,17 @@ public class SearchResult {
 
     //meta
     String keyword;
-
     int pageable_count;
-
     int total_count;
-
     Boolean is_end;
 
     //document
     String place_name;
-
     String address_name;
-
     String category_name;
-
     String phone;
-
     String place_url;
-
     String x;
-
     String y;
 
     int pageCount=0;
@@ -63,7 +54,7 @@ public class SearchResult {
     }
 
 
-    //Page Count Calculation
+    //Calculator the Pages
     public void calPage() {
         IntStream.rangeClosed(0, pageable_count/10).forEach(i->pageCount++);
     }

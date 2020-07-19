@@ -22,14 +22,14 @@ public class KakaoMapApi {
 
     public ResponseEntity getPlace(RestSearchVo restSearchVo) throws Exception{
 
-        //condition Create
+        //Create condition
         String queryString = "?query="+ URLEncoder.encode( restSearchVo.getKeywordNm(),"UTF-8")
                            + "&page="+restSearchVo.getCurrentPage()
                            + "&size=" + restSearchVo.getPageSize();
 
         URI uri= new URI(Host+SEARCH_PLACE_KEYWORD_PATH+queryString);
 
-        //Header Crate
+        //Crate Header
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("Authorization", "KakaoAK " + app_key);
 

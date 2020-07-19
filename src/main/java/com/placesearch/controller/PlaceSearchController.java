@@ -10,11 +10,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.stream.IntStream;
@@ -31,12 +28,12 @@ public class PlaceSearchController {
 
     @GetMapping("/login")
     public String login() {
-
+        searchResultRepository.deleteAll();
         return "login.html";
-        //return "modalTest.html";
+
     }
 
-    @GetMapping("/")
+    @RequestMapping(value="/" , method = {RequestMethod.GET, RequestMethod.POST})
     public String index(Authentication auth, Model result) {
 
         UserDetails user = (UserDetails) auth.getPrincipal();
@@ -50,11 +47,10 @@ public class PlaceSearchController {
 
     //make Search Result List
     @PostMapping("/makeList")
-    public String  makeList(Authentication auth, @RequestBody JSONObject response) {
+    public String makeList(Authentication auth, @RequestBody JSONObject response) {
 
         UserDetails user = (UserDetails) auth.getPrincipal();
-
-        Timestamp createdDate = null;
+        Object buttonClick = response.get("buttonClick");
 
         //meta
         HashMap<String, Object> meta = (HashMap<String, Object>) response.get("meta");
@@ -83,9 +79,19 @@ public class PlaceSearchController {
 
         MySearchHistory mySeacrhHistory = new MySearchHistory(user.getUsername(),same_name.get("keyword"));
 
-        mySearchHistoryRepository.save(mySeacrhHistory);
+        //Search button Click
+        if("1".equals(buttonClick)){
+            mySearchHistoryRepository.delete(mySeacrhHistory);
+            mySearchHistoryRepository.save(mySeacrhHistory);
+        }
 
         return "redirect:/";
+    }
+
+    //Forbidden Page
+    @GetMapping("/forbidden")
+    public String forbidden() {
+        return "403Forbidden.html";
     }
 
 }

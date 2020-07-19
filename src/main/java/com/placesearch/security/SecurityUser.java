@@ -19,18 +19,15 @@ public class SecurityUser extends User {
 
     public SecurityUser(Member member) {
         super(member.getUname(),member.getUpw(), makeGrantedAuthority(member.getRoles()));
-
         this.member = member;
     }
 
     private static List<GrantedAuthority> makeGrantedAuthority(List<MemberRole> roles){
 
         List<GrantedAuthority> list = new ArrayList<>();
-
         roles.forEach(role -> list.add(new SimpleGrantedAuthority(ROLE_PREFIX + role.getRoleName())));
 
         return list;
     }
-
 
 }

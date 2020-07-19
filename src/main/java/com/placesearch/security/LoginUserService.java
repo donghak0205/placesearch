@@ -17,7 +17,6 @@ public class LoginUserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
-
         return memberRepository.findById(username)
                 .filter(m -> m !=null)
                 .map(m -> new SecurityUser(m)).get();

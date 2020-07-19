@@ -29,7 +29,6 @@ public class H2Runner implements ApplicationRunner {
 			member.setUpw(passwordEncoder.encode(member.getUpw()));
 			member.setUname("user" + i);
 
-
 			MemberRole role = new MemberRole();
 			if (i < 4) {
 				role.setRoleName("BASIC");

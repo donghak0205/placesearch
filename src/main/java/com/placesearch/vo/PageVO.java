@@ -20,7 +20,6 @@ public class PageVO {
     public int getPage() {
         return page;
     }
-
     public void setPage(int page) {
         this.page = page < 0 ? 1 : page;
     }
@@ -28,16 +27,14 @@ public class PageVO {
     public int getSize() {
         return size;
     }
-
     public void setSize(int size) {
         this.size = (size < DEFAULT_SIZE || size > DEFAULT_SIZE) ? DEFAULT_SIZE : size;
     }
 
-    //makePageable
+    //Make Pageable
     public Pageable makePageable(int direction, String orderbyName) {
 
         Sort.Direction dir = direction == 0 ? Sort.Direction.DESC : Sort.Direction.ASC; //order standard
-
         return PageRequest.of(this.page - 1, this.size, dir, orderbyName);
 
     }
