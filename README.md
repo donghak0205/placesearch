@@ -2,7 +2,7 @@
 
 # placesearch
 The placesearch is place search project. Enter your keyword to show the results.  
-The project made based on the daum api.(korea API site : https://apis.map.kakao.com)
+The project made based on the daum api.(South korea API site : https://apis.map.kakao.com)
 
 ## Information
 ### 1. Front End
@@ -18,7 +18,7 @@ The project made based on the daum api.(korea API site : https://apis.map.kakao.
 > 5. lombok
 ...
 
-### 3.Instructions
+### 3. Instructions
 > 1. The project is multi-module project. Both projects must be executed for the function.  
      placesearch(9090: Main), placesearch-api(9091 : RestApi)  
 > 2. Accessible id is user5 ~ user9. Inaccessible id is user1~user4.    
