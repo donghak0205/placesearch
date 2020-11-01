@@ -48,7 +48,7 @@ var place = {
 
              $.ajax({
                  type:"POST",
-                 url: "/makeList",
+                 url: "http://52.78.91.204/makeList",
                  data : JSON.stringify(data),
                  contentType: 'application/json',
 
