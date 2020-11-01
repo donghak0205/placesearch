@@ -49,11 +49,11 @@ var place = {
 
              $.ajax({
                  type:"POST",
-                 url: "http://52.78.91.204/makeList",
-                 //data : JSON.stringify(data),
-                 dataType : 'jsonp',
+                 url: "/makeList",
+                 data : JSON.stringify(data),
+                 //dataType : 'jsonp',
                  contentType: 'application/json',
-
+                 crossDomain: true, 
                 success: function(result){
                     refreshMemList();    //reload
 
