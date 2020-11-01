@@ -21,7 +21,7 @@ var place = {
 
         $.ajax({
             type:"GET",
-            url: "https://15.164.88.203:9091/place",
+            url: "http://localhost:9091/place",
             data: data,
             dataType : 'JSON',
 
@@ -83,7 +83,7 @@ var place = {
 
         $.ajax({
             type: "GET",
-            url: "https://15.164.88.203:9091/place",
+            url: "http://localhost:9091/place",
             data: data,
             dataType: 'JSON',
             success: function (res) {
