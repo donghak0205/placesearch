@@ -23,6 +23,7 @@ var place = {
             type:"GET",
             url: "http://15.164.88.203:9091/place",
             data: data,
+            //dataType : 'jsonp',
             dataType : 'JSON',
 
             success: function(result){
@@ -49,7 +50,8 @@ var place = {
              $.ajax({
                  type:"POST",
                  url: "http://52.78.91.204/makeList",
-                 data : JSON.stringify(data),
+                 //data : JSON.stringify(data),
+                 dataType : 'jsonp',
                  contentType: 'application/json',
 
                 success: function(result){
